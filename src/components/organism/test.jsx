@@ -160,11 +160,14 @@ function Test() {
         <span className="close-trigger">
           <i className="close-trigger-bar left"></i>
           <i className="close-trigger-bar right"></i>
+          
         </span>
         <span className="logo">
           <span>
-            ⬢
-            <i className="logo-title">W</i>
+          ⯃	
+          {/* ⬤ */}
+          {/* ▰ */}
+            <i className="logo-title">WE</i>
             <i className="logo-badge">DUM</i>
           </span>
         </span>
@@ -175,16 +178,23 @@ function Test() {
           <div className="menu-container">
             <ul className="menu">
               <li>
-                <a href="#">Login</a>
+                  <h1>Log In</h1>
+              </li>
+              
+              <li>
+                <a href="#">
+                  <input type="text" />
+                </a>
               </li>
               <li>
-                <a href="#">Create account</a>
+                <a href="#">
+                  <input type="text" name="" id="" />
+                </a>
               </li>
               <li>
-                <a href="#">Support</a>
-              </li>
-              <li>
-                <a href="#">About</a>
+                <a href="#">
+                  <button>Log in</button>
+                </a>
               </li>
             </ul>
           </div>
