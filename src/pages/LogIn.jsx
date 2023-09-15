@@ -1,10 +1,10 @@
 import React from "react";
-import Test from "../components/organism/test";
+import Container from "../components/organism/Container";
 import "../assets/styles/LogIn.css"
 function LogIn() {
     return ( 
         <>
-        <Test/>
+        <Container/>
         </>
      );
 }

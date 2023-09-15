@@ -1,6 +1,7 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { useState } from "react";
 import LogIn from '../pages/LogIn';
+import Devices from '../pages/Devices';
 
 function App() {
   
@@ -11,6 +12,7 @@ function App() {
     <BrowserRouter>
           <Routes>
             <Route path="/" element={<LogIn />} />
+            <Route path="/Devices" element={<Devices />} />
           </Routes>
     </BrowserRouter>
   );

@@ -1,7 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, navigate } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { TimelineMax, Power2, Power4 } from 'gsap';
 
-function Test() {
+function Container() {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+     
+    navigate('/Devices');
+  };
   useEffect(() => {
     // OPEN TRIGGER
     const openTrigger = document.querySelector('.menu-trigger');
@@ -151,6 +158,8 @@ function Test() {
 
   return (
     <>
+    <div className='Main-Body-Container'>
+
       <div className="container">
         <span className="menu-trigger">
           <i className="menu-trigger-bar top"></i>
@@ -178,30 +187,31 @@ function Test() {
           <div className="menu-container">
             <ul className="menu">
               <li>
-                  <h1>Log In</h1>
+                <h1 className="custom-animation">Log In</h1>
               </li>
               
               <li>
-                <a href="#">
-                  <input type="text" />
+                <a >
+                  <input type="text" className="custom-animation" placeholder='Email' />
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <input type="text" name="" id="" />
+                <a >
+                  <input type="text" name="" id="" className="custom-animation" placeholder='Password'/>
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <button>Log in</button>
+                <a >
+                  <button className="custom-animation" onClick={handleLogin} >Log in</button>
                 </a>
               </li>
             </ul>
           </div>
         </div>
       </div>
+      </div>
     </>
   );
 }
 
-export default Test;
+export default Container;
