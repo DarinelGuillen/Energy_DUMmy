@@ -174,8 +174,6 @@ function Container() {
         <span className="logo">
           <span>
           ⯃	
-          {/* ⬤ */}
-          {/* ▰ */}
             <i className="logo-title">WE</i>
             <i className="logo-badge">DUM</i>
           </span>
