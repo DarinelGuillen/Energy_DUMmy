@@ -5,7 +5,7 @@
     /* justify-content: flex-end;
     align-items: flex-start; */
     position: relative;
-    /* background-color: rgba(255, 0, 0, 0.276); */
+    /* background-color: rgba(255, 0, 0, 0.156); */
 }
 
 
@@ -16,7 +16,7 @@
     justify-content: center;
     align-items: center;
     padding: 2px;
-    background: rgba(255, 255, 255, 0.7);
+    /* background: rgba(255, 255, 255, 0.7); */
     /* Fondo semitransparente */
 }
 
@@ -28,6 +28,10 @@
     line-height: 1.2;
 }
 
-.Title-TI h1 span {
-    font-weight: lighter;
+#light {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 10;
+    font-size: 7rem;
+    /* font-weight: lighter; */
+    /* background-color: blue; */
 }

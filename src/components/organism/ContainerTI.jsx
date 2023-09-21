@@ -4,9 +4,8 @@ function ContanerTI() {
         <>
             <div className="WrapperTI">
                 <div className="Title-TI">
-                    <h1>Dainign <span>RoOm 1 </span> </h1>
+                    <h1>Dainign <span id="light">RoOm 1 </span> </h1>
                 </div>
-
             </div>
         </>
     );

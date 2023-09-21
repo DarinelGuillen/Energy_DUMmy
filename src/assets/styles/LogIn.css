@@ -1,12 +1,5 @@
 /* VARIABLES */
-:root {
-    --black: #000000ff;
-    --eerie-black: #171717ff;
-    --vivid-sky-blue: #47c9fbff;
-    --french-violet: #8818c4ff;
-    --saffron: #f3bf09ff;
-    --white: #ffffffff;
-  }
+
  /*  */
  .custom-animation {
   animation: bounce 3s ease-in-out;

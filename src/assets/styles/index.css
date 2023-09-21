@@ -9,9 +9,29 @@ body{
 }
 
 html {
+    --bgColorMenu: #1d1d27;
+    --duration: .7s;
     background-color: #ffffff;
     scroll-behavior: smooth;
     font-family: 'Montserrat', sans-serif;
 
     font-size: 80.5%;
 }
+
+html *,
+html *::before,
+html *::after {
+
+    box-sizing: inherit;
+
+}
+:root {
+    --black: #000000ff;
+    /* --black: #ffffffff; */
+    --eerie-black: #171717ff;
+    --vivid-sky-blue: #47c9fbff;
+    --french-violet: #8818c4ff;
+    --saffron: #f3bf09ff;
+    --white: #ffffffff;
+    /* --white: #000000ff; */
+  }
