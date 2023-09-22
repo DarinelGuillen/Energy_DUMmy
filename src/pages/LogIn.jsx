@@ -1,10 +1,8 @@
 import React from "react";
-import Container from "../components/organism/Container";
-import "../assets/styles/LogIn.css"
 function LogIn() {
     return ( 
         <>
-        <Container/>
+        <h1>Holaaaa</h1>
         </>
      );
 }
