@@ -1,8 +1,8 @@
-import React from "react";
+import Log from "../components/organism/Log";
 function LogIn() {
     return ( 
         <>
-        <h1>Holaaaa</h1>
+            <Log />
         </>
      );
 }
