@@ -1,4 +1,4 @@
-function Devices() {
+function Main() {
     return (
         <>
         <h1>hello</h1>
@@ -6,4 +6,4 @@ function Devices() {
       );
 }
 
-export default Devices;
+export default Main;

@@ -1,39 +1,80 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+
 function Log() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate(); // Initialize useNavigate
+
+    const handleLogin = () => {
+        const URL = `http://localhost:3000/users/${email}/${password}`;
+
+        fetch(URL)
+            .then((response) => {
+                if (response.status === 200) {
+                    navigate('/');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log('Login response:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    };
+
+
     return (
-        <div className="bg-[#F9FAFB] h-screen w-screen flex items-center">
-            <div className="h-max mx-auto flex flex-col items-center">
-                <img className="h-[40px] w-[47px] mb-5" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
-                <h1 className="text-xl font-bold text-center pb-10">Sign in to your account</h1>
-                <div className="bg-white shadow-xl p-10 flex flex-col gap-4 text-sm">
-                    <div>
-                        <label className="text-gray-600 font-bold inline-block pb-2" htmlFor="email">Email</label>
-                        <input className="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" type="email" name="email" placeholder="mehedi@jaman.com" />
+        <div className="bg-[--background] h-screen w-screen flex items-center">
+            <div className="h-max w-full mx-auto flex flex-col items-center">
+                <div className="bg-[--black] w-full sm:w-5/6 md:w-1/2 lg:w-1/4 rounded-xl shadow-xl p-10 flex flex-col gap-4 text-sm">
+                    <div className="items-center">
+                        <img
+                            className="h-[40px] w-[47px] mx-auto mb-5"
+                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                            alt=""
+                        />
+                        <h1 className="text-xl font-bold text-center pb-10 text-[--white]">Inicio de sesión</h1>
+                        <div className="bg-[--white] h-px w-full mb-4"></div>
+                        <label className="text-[--white] font-bold inline-block pb-2" htmlFor="email">
+                            Email
+                        </label>
+                        <input
+                            className="bg-[#938989] border border-white focus:border-gray-400 focus:outline-none rounded-md w-full shadow-sm px-5 py-2 text-[--white] placeholder-gray-400"
+                            type="email"
+                            name="email"
+                            placeholder="Example@WEnergy.com"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
                     </div>
                     <div>
-                        <label className="text-gray-600 font-bold inline-block pb-2" htmlFor="password">Password</label>
-                        <input className="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" type="password" name="password" placeholder="******" />
+                        <label className="text-[--white] font-bold inline-block pb-2" htmlFor="password">
+                            Password
+                        </label>
+                        <input
+                            className="bg-[#938989] border border-white focus:border-gray-400 focus:outline-none rounded-md w-full shadow-sm px-5 py-2 text-[--white] placeholder-gray-400"
+                            type="password"
+                            name="password"
+                            placeholder="******"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
                     </div>
-                    <div className="flex">
-                        <div className="w-1/2">
-                            <input type="checkbox" name="remeberMe" />
-                            <label htmlFor="remeberMe">Remember me</label>
-                        </div>
-                        <div className="w-1/2">
-                            <a className="font-bold text-blue-600" href="">Forgot password ?</a>
-                        </div>
-                    </div>
-                    <div>
-                        <input className="bg-[#4F46E5] w-full py-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#181196]" type="submit" value="Login" />
-                    </div>
-                    <div>
-                        <p className="text-center">Or continue with</p>
-                    </div>
-                    <div className="flex gap-4">
-                        <button className="bg-[#1D9BF0] w-1/2 py-1 rounded-md text-white font-bold cursor-pointer hover:bg-[#181196]">Twitter</button>
-                        <button className="bg-[#24292F] w-1/2 py-1 rounded-md text-white font-bold cursor-pointer hover:bg-[#181196]">Github</button>
+                    <div className="flex"></div>
+                    <div className="items-center text-center">
+                        <button
+                            className="bg-[--Spring-green] w-full hover:bg-[--Aureolin] text-white font-bold py-2 px-4 rounded-full"
+                            onClick={handleLogin}
+                        >
+                            Iniciar Sesión
+                        </button>
+                        <p className="text-sm text-gray-500 mt-10">
+                            ¿No tienes cuenta? <a href="#" className="text-[#4F46E5] font-bold">Regístrate aquí</a>
+                        </p>
                     </div>
                 </div>
-                <p className="text-sm text-gray-500 mt-10">Not a member? <a href="#" className="text-[#4F46E5] font-bold">Start a 14 day free trial</a></p>
             </div>
         </div>
     );

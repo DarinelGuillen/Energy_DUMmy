@@ -1,4 +1,20 @@
+:root {
+    --black: #020203;
+    --Spring-green: #1AFA91;
+    --Aureolin: #FFE539;
+    --Aqua: #54FAFD;
+    --white: #ffffffff;
+    --white-C-text: #6D6C6C;
+    --background: #121213;
+}
 @tailwind base;
+html {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'San Francisco', Helvetica, Arial, sans-serif;
+    scroll-behavior: smooth;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 80.5%;
+}
 @tailwind components;
 @tailwind utilities;
 
@@ -6,36 +22,7 @@
     margin: 0;
     box-sizing: border-box;
 }
-body{
+body {
     margin: 0;
     padding: 0;
-    /* width: 500%; */
 }
-
-html {
-    --bgColorMenu: #1d1d27;
-    --duration: .7s;
-    background-color: #ffffff;
-    scroll-behavior: smooth;
-    font-family: 'Montserrat', sans-serif;
-
-    font-size: 80.5%;
-}
-
-html *,
-html *::before,
-html *::after {
-
-    box-sizing: inherit;
-
-}
-:root {
-    --black: #000000ff;
-    /* --black: #ffffffff; */
-    --eerie-black: #171717ff;
-    --vivid-sky-blue: #47c9fbff;
-    --french-violet: #8818c4ff;
-    --saffron: #f3bf09ff;
-    --white: #ffffffff;
-    /* --white: #000000ff; */
-  }
