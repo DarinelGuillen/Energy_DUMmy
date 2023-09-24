@@ -1,34 +1,37 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-
+import "../../assets/styles/Log.css"
 function Log() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate();
 
     const handleLogin = () => {
-        const URL = `http://localhost:3000/users/${email}/${password}`;
+        // const URL = `http://localhost:3000/users/${email}/${password}`;
 
-        fetch(URL)
-            .then((response) => {
-                if (response.status === 200) {
-                    navigate('/');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                console.log('Login response:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+        // fetch(URL)
+        //     .then((response) => {
+        //         if (response.status === 200) {
+        //             navigate('/Main');
+        //         }
+        //         return response.json();
+        //     })
+        //     .then((data) => {
+        //         console.log('Login response:', data);
+        //     })
+        //     .catch((error) => {
+        //         console.error('Error:', error);
+        //     });
+        console.log("Login response: ", password, " and ", email);
+        navigate('/Main');
+
     };
 
 
     return (
         <div className="bg-[--background] h-screen w-screen flex items-center">
             <div className="h-max w-full mx-auto flex flex-col items-center">
-                <div className="bg-[--black] w-full sm:w-5/6 md:w-1/2 lg:w-1/4 rounded-xl shadow-xl p-10 flex flex-col gap-4 text-sm">
+                <div className="log-animation bg-[--black] w-full sm:w-5/6 md:w-1/2 lg:w-1/4 rounded-xl shadow-xl p-10 flex flex-col gap-4 text-sm">
                     <div className="items-center">
                         <img
                             className="h-[40px] w-[47px] mx-auto mb-5"

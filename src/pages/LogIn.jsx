@@ -3,8 +3,8 @@ import Welcome from "../components/organism/Welcome";
 function LogIn() {
     return ( 
         <>
-            <Welcome />
-            {/* <Log /> */}
+            {/* <Welcome /> */}
+            <Log />
         </>
      );
 }
