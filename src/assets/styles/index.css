@@ -5,8 +5,9 @@
     --Aqua: #54FAFD;
     --white: #ffffffff;
     --Inputs-bg: #1C1D1E;
-    --Lines:#636761;
-    --Menus-bg:#232220a6;
+    --Lines:#a2a5a086;
+    --Glassmorphic: backdrop-filter: blur(10px);
+    --Menus-bg:#2322202a;
     --background: #121213;
 
 }
@@ -36,7 +37,6 @@ body {
     overflow-x: hidden;
 }
 
-/* table.no-scrollbar {} */
 
 .component-box {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -59,4 +59,12 @@ body {
 .smooth-scroll {
     overflow-y: auto;
     scroll-behavior: smooth;
+}
+
+.Neumorphism {
+    border-radius: 10px;
+    background: #878282;
+    box-shadow: inset 24px 24px 49px #686464,
+                inset -24px -24px 49px #a6a0a0;
+              
 }
