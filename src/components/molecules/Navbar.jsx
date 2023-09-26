@@ -1,6 +1,6 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
-import Icon from "../../assets/img/mas.png";
 import UserContext from "../../contexts/UserContext.js";
+import Menu from "../atoms/Menu"
 
 function Navbar() {
   const { User, setUser } = useContext(UserContext);
@@ -43,12 +43,8 @@ function Navbar() {
 
   return (
     <div className="flex flex-col w-full h-full">
-      <div className="flex w-full justify-end py-4">
-        <img
-          src={Icon}
-          alt="Icon"
-          className="h-6 w-6 mr-[7%] mx-auto ml-auto"
-        />
+      <div className="flex w-full justify-end py-4 pr-7 bg-yellow-400">
+        <Menu/>
       </div>
 
       <form className="align-items-center pt-0 px-2">

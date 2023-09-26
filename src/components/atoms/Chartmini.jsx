@@ -11,12 +11,12 @@ function Chartmini() {
     }, []);
     let options = {
         chart: {
-            width: undefined,
+            width: "10px",
             height: undefined,
             position: 'fixed',
             type: "area",
             fontFamily: "Inter, sans-serif",
-            background: '#ffffff',
+            background: 'blue',
             dropShadow: {
                 enabled: false,
             },
@@ -38,7 +38,7 @@ function Chartmini() {
             {
                 name: "Device",
                 data: [6500, 6418, 6456, 6526, 6356, 6456],
-                color: "#FFE539",
+                color: "red",
             },
         ],
         xaxis: {

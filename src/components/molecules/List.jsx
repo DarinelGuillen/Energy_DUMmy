@@ -11,7 +11,7 @@ function List() {
               <br />
               vdfgsvdv
             </div>
-                      <div className="flex bg-red-200 h-auto w-[80%]">
+            <div className="flex bg-red-500 p-1 h-auto w-[80%]">
               <div className=" grow-0">
                 <Chartmini />
               </div>
