@@ -43,7 +43,7 @@ function Navbar() {
 
   return (
     <div className="flex flex-col w-full h-full">
-      <div className="flex w-full justify-end py-4 pr-7 bg-yellow-400">
+      <div className="flex w-full justify-end py-4 pr-7 ">
         <Menu/>
       </div>
 
@@ -91,7 +91,7 @@ function Navbar() {
 <div
   ref={dropdownRef}
   id="dropdown"
-  className={`w-48 absolute  text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white Neumorphism ${User.isDropdownVisible ? 'block' : 'hidden'
+  className={` w-48 absolute  text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white Neumorphism ${User.isDropdownVisible ? 'block' : 'hidden'
     }`}
   style={{
     top: '100%',
@@ -131,18 +131,19 @@ function Navbar() {
             <input
               type="search"
               id="search-dropdown"
-              className="block p-2.5 w-[80%] z-20 text-sm text-[--white] rounded-full bg-[--Inputs-bg]"
+              className="block p-2.5 w-[100%] z-15 text-sm text-[--white] rounded-full bg-[--Inputs-bg]"
               placeholder="Casa, Cuarto, oficina..."
               required
             />
+          </div>
+
             <button
               onClick={handlerSearch}
               type="submit"
-              className="absolute top-0 right-0 p-2 md:mr-2 lg:mr-9 h-full text-white"
+              className="fix top-0 right-0 p-2 md:mr-2 lg:mr-9 h-full text-white"
             >
               <span className="material-symbols-outlined">search</span>
             </button>
-          </div>
         </div>
       </form>
     </div>

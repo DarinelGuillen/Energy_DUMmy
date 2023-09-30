@@ -4,6 +4,12 @@ import Charts from "../components/organism/Charts";
 import "../assets/styles/Main.css";
 
 function Main() {
+  const data=({
+    id:1,
+    name:"dari",
+    value:"dari"
+  })
+
   return (
     <div className="flex flex-col md:flex-row min-h-screen h-screen flex-grow-1">
       {/* Left Column */}
@@ -13,7 +19,7 @@ function Main() {
 
       {/* Right Column */}
       <div className="hidden md:block flex-grow bg-[--black] p-4 component-box smooth-scroll component-box-animation right-column">
-        <Charts />
+        <Charts params={data} />
       </div>
     </div>
   );
