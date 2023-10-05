@@ -7,21 +7,21 @@ function Log() {
     const navigate = useNavigate();
 
     const handleLogin = () => {
-        // const URL = `http://localhost:3000/users/${email}/${password}`;
+        const URL = `http://localhost:3000/users/${email}/${password}`;
 
-        // fetch(URL)
-        //     .then((response) => {
-        //         if (response.status === 200) {
-        //             navigate('/Main');
-        //         }
-        //         return response.json();
-        //     })
-        //     .then((data) => {
-        //         console.log('Login response:', data);
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error:', error);
-        //     });
+        fetch(URL)
+            .then((response) => {
+                if (response.status === 200) {
+                    navigate('/Main');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log('Login response:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
         console.log("Login response: ", password, " and ", email);
         navigate('/Main');
 
