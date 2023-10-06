@@ -14,20 +14,15 @@ function Devices() {
 
   return (
     <>
-    <div className="flex flex-col flex-grow h-full">
-        
-
+      <div className="flex flex-col flex-grow h-full w-full">
         {/* Top row */}
-        <div className="h-auto">
+        <div className="h-auto w-full">
           <Navbar />
         </div>
-
-
       {/* Bottom row */}
-      <div className="flex-grow ">
-        <List/>
-        
-      </div>
+        <div className="flex-grow w-full h-full ">
+          <List />
+        </div>
     </div>
     </>
   );

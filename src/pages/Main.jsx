@@ -19,7 +19,7 @@ function Main() {
 
       {/* Right Column */}
       <div className="hidden md:block flex-grow md:w-2/3 bg-[--black] p-2 component-box smooth-scroll component-box-animation right-column">
-        <Charts params={data} />
+        {/* <Charts params={data} /> */}
       </div>
     </div>
   );
