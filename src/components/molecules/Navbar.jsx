@@ -45,6 +45,7 @@ function Navbar() {
     <div className="flex flex-col w-full h-full">
       <div className="flex w-full justify-end py-4 pr-7 ">
         <Menu/>
+        
       </div>
 
       <form className="align-items-center pt-0 px-2">
@@ -58,40 +59,13 @@ function Navbar() {
             All
             <span className="material-symbols-outlined">expand_more</span>
           </button>
-          {/* <>
-            
-              <div
-                ref={dropdownRef}
-                id="dropdown"
-                className={`Neumorphism z-20 absolute rounded-xl shadow w-44 ${User.isDropdownVisible ? 'block' : 'hidden'
-                  }`}
-                style={{
-                  top: '100%',  
-                  left: 0,  
-                }}
-              >
-                <ul className="py-2 text-sm text-[--white] " aria-labelledby="dropdown-button">
-                  <li className="border-[--Lines] border-b border-solid">
-                    <button type="button" className="inline-flex w-full px-4 py-2 ">Mockups</button>
-                  </li>
-                  <li className="border-[--Lines] border-b border-solid">
-                    <button type="button" className="inline-flex w-full px-4 py-2">Templates</button>
-                  </li>
-                  <li className="border-[--Lines] border-b border-solid">
-                    <button type="button" className="inline-flex w-full px-4 py-2">Design</button>
-                  </li>
-                  <li >
-                    <button type="button" className="inline-flex w-full px-4 py-2">Logos</button>
-                  </li>
-                </ul>
-              </div>
-          </> */}
+
 <>
 
 <div
   ref={dropdownRef}
   id="dropdown"
-  className={` w-48 absolute  text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white Neumorphism ${User.isDropdownVisible ? 'block' : 'hidden'
+              className={`z-10 w-48 absolute  text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white Neumorphism ${User.isDropdownVisible ? 'block' : 'hidden'
     }`}
   style={{
     top: '100%',

@@ -9,6 +9,8 @@ function App() {
   const [User, setUser] = useState({
     isDropdownVisible:false,
     isDropdownVisibleMenu:false,
+    leftColumn: true,
+    rightColumn: true
   }); 
 
   return (

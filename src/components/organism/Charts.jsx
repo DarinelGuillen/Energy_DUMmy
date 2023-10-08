@@ -1,29 +1,34 @@
-import React from 'react';
+import React, { useContext } from "react";
 import Areachart from '../molecules/Areachart';
+import Menu from '../atoms/Menu';
+import UserContext from '../../contexts/UserContext';
+import Cardinfo from "../molecules/Cardinfo";
 
-function Charts(params) {
+function Charts() {
+  const data = [
+    { id: 1, title: "Charts", number: 4000, icon: "" },
+    { id: 2, title: "Statistics", number: 3500, icon: "" },
+    { id: 3, title: "Reports", number: 2800, icon: "" },
+    { id: 4, title: "Analytics", number: 5000, icon: "" }
+  ];
+
+  const { User } = useContext(UserContext);
+
   return (
     <>
-      <div className='flex flex-col items-center justify-center h-full w-full bg-slate-950 p-0'>
+      <div className="flex absolute justify-center items-center w-full h-auto ">
+        {!User.leftColumn && <Menu />}
+      </div>
+      <div className='flex flex-col items-center justify-center h-full w-full p-0'>
         {/* Top */}
-        <div className='flex grow justify-around items-center w-full space-x-2 bg-slate-900'>
-          {/* Start card */}
-          <div className='flex  w-[25%] h-[100%] bg-red-500   flex-col '>
-            <div className='h-[70%] bg-blue-500 bg-red-400 w-30 block flex'>
-              {/* left icon center*/}
-              <h1>ICON </h1>
-              {/* here goes a number  */}
-              <h1>50%</h1>
-              <label> have save 40% last year</label>
-            </div>
-            <div className='h-[30%] bg-yellow-500 w-30 bg-blue-500'>
-              <label> % increase 100</label>
+        <div className='flex p-2 grow-0 w-full'>
+          <div className="w-full h-full">
+            <div className="grid grid-cols-12 gap-4">
+              {data.map((cardData) => (
+                <Cardinfo key={cardData.id} data={cardData} />
+              ))}
             </div>
           </div>
-          {/* end card */}
-          <div className='grow h-16 bg-red-800 '></div>
-          <div className='grow h-16 bg-red-800 '></div>
-          <div className='grow h-16 bg-red-800 '></div>
         </div>
         {/* End Top */}
         
@@ -36,8 +41,7 @@ function Charts(params) {
         {/* Bottom */}
         <div className='grow mt-4 bg-slate-900 w-full h-auto'>
           <h2 className='text-2xl font-bold'>
-          About the total energy expended in a month
-          About the total energy expended in a month
+            About the total energy expended in a month
           </h2>
           <p className='text-lg mt-2'>Some recommendations: turn off things, etc.</p>
         </div>
