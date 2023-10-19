@@ -7,7 +7,7 @@ function Cardinfo({ data }) {
                 <div className="flex flex-row  shadow-sm rounded md:p-5 p-1  bg-white backdrop-filter backdrop-blur-lg bg-opacity-20   shadow-lg ">
                     <div className="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-blue-100 text-red-500">
                         {/* Condicion Goes here */}
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             bolt
                         </span>
                     </div>

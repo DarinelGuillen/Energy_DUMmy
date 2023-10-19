@@ -37,7 +37,7 @@ function Chartmini() {
         series: [
             {
                 name: "Device",
-                data: [6500, 6418, 6456, 6526, 6356, 6456],
+                data: [5, 5, 5, 6, 8, 9],
                 fill: {
                     type: 'gradient',
                     gradient: {

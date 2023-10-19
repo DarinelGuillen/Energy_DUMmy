@@ -2,7 +2,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { useState } from "react";
 import LogIn from '../pages/LogIn';
 import Main from '../pages/Main';
-
+import Register from '../pages/Register';
 import UserContext from '../contexts/UserContext.js';
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LogIn />} />
           <Route path="/Main" element={<Main />} />
+          <Route path="/Register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </UserContext.Provider>
