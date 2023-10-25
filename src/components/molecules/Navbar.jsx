@@ -47,8 +47,8 @@ function Navbar() {
         <Menu/>
         
       </div>
-
-      <form className="align-items-center pt-0 px-2">
+      {/*! Search var  */}
+      {/* <form className="align-items-center pt-0 px-2">
         <div className="flex relative text-white">
           <button
             id="dropdown-button"
@@ -119,7 +119,7 @@ function Navbar() {
               <span className="material-symbols-outlined">search</span>
             </button>
         </div>
-      </form>
+      </form> */}
     </div>
   );
 }

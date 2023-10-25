@@ -1,13 +1,19 @@
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import "../../assets/styles/Log.css"
+
+import UserContext from '../../contexts/UserContext';
+import DevicesContext from '../../contexts/DevicesContext';
+
 function Log() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { User, setUser } = useContext(UserContext);  
+    const { Devices, setDevices } = useContext(DevicesContext);  
+
     const navigate = useNavigate();
     const handlerRegis = () => {
         // e.PreventDefault();
-        console.log("🚀 ~ file: Log.jsx:10 ~ handlerRegis ~ PreventDefault:")
         
         navigate('/Register');
 
@@ -17,22 +23,28 @@ function Log() {
 
         fetch(URL)
             .then((response) => {
-                if (response.status === 200) {
-                    navigate('/Main');
-                }
+                
                 return response.json();
             })
             .then((data) => {
-                console.log('Login response:', data);
+                if (data && data.status === "success" && data.data) {
+                    const userData = data.data;
+                    setUser((prevUser) => ({
+                        ...prevUser,
+                        User: userData,
+                    }));
+                    navigate('/Main');
+
+                } else {
+                    console.error("Respuesta del servidor no válida:", data);
+                }
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
         console.log("Login response: ", password, " and ", email);
-        navigate('/Main');
-
     };
-
+   
 
     return (
         <div className="bg-[--background] h-screen w-screen flex items-center">

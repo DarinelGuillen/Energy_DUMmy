@@ -1,14 +1,19 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import ApexCharts from 'react-apexcharts';
+import DevicesContext from '../../contexts/DevicesContext';
 
+function Chartmini(id) {
+    const { Devices, setDevices } = useContext(DevicesContext);  
 
-function Chartmini() {
     useEffect(() => {
         if (document.getElementById("area-chart") && typeof ApexCharts !== 'undefined') {
             const chart = new ApexCharts(document.getElementById("area-chart"), options);
             chart.render();
         }
-    }, []);
+
+      // console.log("🚀 ~ file: Chartmini.jsx:14 ~ useEffect ~ id:", id)
+
+  }, []);
     let options = {
         chart: {
             type: "area",
@@ -36,7 +41,7 @@ function Chartmini() {
         },
         series: [
             {
-                name: "Device",
+                name: "Device main foco",
                 data: [5, 5, 5, 6, 8, 9],
                 fill: {
                     type: 'gradient',
@@ -73,6 +78,9 @@ function Chartmini() {
             show: true
         }
     };
+  
+
+
 
     return (
         <>

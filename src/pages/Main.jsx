@@ -8,12 +8,6 @@ import UserContext from '../contexts/UserContext.js';
 function Main() {
   const { User,setUser  } = useContext(UserContext);
 
-  const data = {
-    id: 1,
-    name: "dari",
-    value: "dari"
-  };
-
   return (
     <div className="flex flex-col md:flex-row min-h-screen h-screen flex-grow-1">
       {User.leftColumn == false && User.rightColumn == false && (
@@ -32,7 +26,7 @@ function Main() {
       {/* Right Column */}
       {User.rightColumn && (
         <div className={`${User.leftColumn ? 'hidden' : ''} md:block flex-grow md:w-2/3 bg-[--black] p-2 component-box smooth-scroll component-box-animation right-column`}>
-          <Charts params={data} />
+          <Charts  />
         </div>
       )}
     </div>

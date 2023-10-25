@@ -1,0 +1,64 @@
+#wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+}
+
+.content-area {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+}
+
+.main {
+  flex: 1;
+}
+
+/* LG breakpoint */
+@media (min-width: 1200px) {
+    .main {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    /* .cardinfo {
+      width: 100%;
+      margin-bottom: 1rem;
+    } */
+  
+    .row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      
+    }
+  
+    .col-md-5,
+    .col-md-7 {
+      flex-basis: 48%;
+    }
+  }
+  
+/* MD and SM breakpoints */
+@media (max-width: 1500) {
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cardinfo {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .col-md-5,
+  .col-md-7 {
+    flex-basis: 100%;
+  }
+}
+

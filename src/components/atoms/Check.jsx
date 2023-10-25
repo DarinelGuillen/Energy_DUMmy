@@ -1,39 +1,77 @@
-import React, { useState, useEffect } from "react";
-import "../../assets/styles/Check.css"; // Asegúrate de tener las clases de Tailwind CSS definidas aquí
+import React, { useState, useEffect, useContext } from "react";
+import "../../assets/styles/Check.css";
+import DevicesContext from "../../contexts/DevicesContext";
 
-function Check() {
-    const [isChecked, setIsChecked] = useState(false);
-    const [showLabel, setShowLabel] = useState(false);
+function Check({ check, id, name }) {
+    const { Devices, setDevices } = useContext(DevicesContext);
 
-    const toggleCheckbox = () => {
-        setIsChecked(!isChecked);
-        setShowLabel(true); // Mostrar el label cuando el checkbox cambia
-        setTimeout(() => {
-            setShowLabel(false); // Ocultar el label después de 3 segundos
-        }, 3000);
+    const HandlerInput = (check, id, name, e) => {
+        // // console.log("🚀 ~ file: Check.jsx:20 ~ .then ~ data.device[0]:", JSON.stringify())
+
+        e.preventDefault();
+        // // // console.log( "🚀 ~ file: Check.jsx:16 ~ HandlerInpu ~ check:", check, " id : ", id, " name : ", name);
+        fetch(`http://localhost:3000/device/status/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                // // console.log("🚀 ~ file: Devices.jsx:20 ~ .then ~ data.data:", JSON.stringify(data.device[0]));
+
+                // Encuentra el dispositivo correspondiente en el contexto DevicesContext
+                const updatedDevices = Devices.map((device) => {
+                    if (device.id === data.device[0].id) {
+                        // Actualiza el estado del dispositivo
+                        return { ...device, status: data.device[0].status };
+                    }
+                    return device;
+                });
+
+                // Actualiza el contexto DevicesContext con el dispositivo actualizado
+                setDevices(updatedDevices);
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
+        // !other
+        // Obtener el identificador único del label concatenando el id
+        const labelId = `label${id}`;
+
+        // Mostrar el label específico cuando se hace clic en el checkbox
+        const label = document.getElementById(labelId);
+        if (label) {
+            label.style.display = "inline-block"; // Mostrar el label específico
+            setTimeout(() => {
+                label.style.display = "none"; // Ocultar el label después de 3 segundos
+            }, 3000);
+        }
     };
+    useEffect(() => {
+
+        // console.log("🚀 ~ file: Check.jsx:45 ~ useEffect ~ Devices:", Devices[0])
+    }, [Devices]);  
 
     return (
         <>
-          <input
-              type="checkbox"
-              id="cbx2"
-              style={{ display: "none" }}
-              checked={isChecked}
-              onChange={toggleCheckbox}
-          />
-          <label htmlFor="cbx2" className="check relative group">
-              <svg width="18px" height="18px" viewBox="0 0 18 18">
-                  <path d="M 1 9 L 1 9 c 0 -5 3 -8 8 -8 L 9 1 C 14 1 17 5 17 9 L 17 9 c 0 4 -4 8 -8 8 L 9 17 C 5 17 1 14 1 9 L 1 9 Z"></path>
-                  <polyline points="1 9 7 14 15 4"></polyline>
-              </svg>
-              {showLabel && (
-                  //   <span className="absolute -top-14 left-[50%] -translate-x-[50%] z-20 origin-left scale-0 px-3 rounded-lg border border-gray-300 bg-white py-2 text-sm font-bold shadow-md transition-all duration-300 ease-in-out group-hover:scale-100">
-                  <span className="absolute -top-14 left-[50%] -translate-x-[50%] z-20 origin-left scale-0 px-3 rounded-lg border border-gray-300 py-2 text-sm font-bold shadow-md transition-all duration-300 ease-in-out group-hover:scale-100 bg-dark dark:bg-black">
-                      {isChecked ? "Encendido" : "Apagado"}
-                  </span>
-              )}
-          </label>
+            <div className="flex items-center">
+                <label htmlFor={id} className="check relative group">
+                    <input
+                        checked={check}
+                        onClick={(e) => HandlerInput(check, id, name, e)}
+                        id={id}
+                        type="checkbox"
+                        value=""
+                        className="w-4 h-4 text-[--Aqua] bg-red-600 border-gray-300 rounded focus:ring-[--Aureolin] "
+                    />
+
+
+                    <span id={`label${id}`} className="absolute -top-14 left-[50%] -translate-x-[50%] z-20 origin-left scale-0 px-3 rounded-lg border border-gray-300 py-2 text-sm font-bold shadow-md transition-all duration-300 ease-in-out group-hover:scale-100 bg-dark dark:bg-black" style={{ display: "none" }}>
+                        {check ? "Encendido" : "Apagado"}
+                    </span>
+                </label>
+            </div>
       </>
   );
 }
