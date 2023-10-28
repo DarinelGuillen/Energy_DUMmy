@@ -2,7 +2,7 @@ import "../../assets/styles/Cardinfo.css"
 import "../../assets/styles/Mainchartview.css"
 
 import React, { useEffect, useState, useMemo, useCallback } from "react";
-import { apexConfig, spark1, spark2, spark3, spark4, optionsLine, optionsCircle4, optionsBar, optionsArea } from './scripts';
+import { apexConfig, spark1, spark2, spark3, spark4, optionsLine, optionsCircle4, optionsBar } from './scripts';
 import Cardinfo from "./Cardinfo";
 
 function Mainchartview() {
@@ -16,8 +16,8 @@ function Mainchartview() {
     optionsLine,
     optionsCircle4,
     optionsBar,
-    optionsArea,
-  }), [apexConfig, spark1, spark2, spark3, spark4, optionsLine, optionsCircle4, optionsBar, optionsArea]);
+
+  }), [apexConfig, spark1, spark2, spark3, spark4, optionsLine, optionsCircle4, optionsBar]);
 
   useEffect(() => {
     // Creating and rendering the charts inside the useEffect with an empty dependency array
@@ -27,8 +27,8 @@ function Mainchartview() {
     chartCircle4.render();
     var chartBar = new ApexCharts(document.querySelector("#barchart"), optionsBar);
     chartBar.render();
-    var chartArea = new ApexCharts(document.querySelector("#areachart"), optionsArea);
-    chartArea.render();
+    // var chartArea = new ApexCharts(document.querySelector("#areachart"), optionsArea);
+    // chartArea.render();
     var sparkline1 = new ApexCharts(document.querySelector("#spark1"), spark1);
     sparkline1.render();
     var sparkline2 = new ApexCharts(document.querySelector("#spark2"), spark2);
@@ -43,7 +43,7 @@ function Mainchartview() {
       chartLine.destroy();
       chartCircle4.destroy();
       chartBar.destroy();
-      chartArea.destroy();
+      // chartArea.destroy();
       sparkline1.destroy();
       sparkline2.destroy();
       sparkline3.destroy();
@@ -54,7 +54,6 @@ function Mainchartview() {
     <>
       {chartData && (
     // Render your charts using the `chartData` state variable
-    <div>
       <div id="wrapper">
 
             <div className="main">
@@ -78,16 +77,15 @@ function Mainchartview() {
                     <div id="barchart"></div>
                   </div>
                 </div>
-                <div className="col-md-7">
+                {/* <div className="col-md-7">
                   <div className="box shadow mt-4">
                     <div id="areachart"></div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
 
       </div>
-    </div>
       )}
 
     </>

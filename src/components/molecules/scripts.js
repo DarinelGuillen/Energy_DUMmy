@@ -1,3 +1,29 @@
+async function fetchData(parametro) {
+  console.log("🚀 ~ file: scripts.js:2 ~ fetchData ~ parametro:", parametro);
+  try {
+    const response = await fetch('http://localhost:3000/register/chart');
+    const data = await response.json();
+    if (parametro === 1) {
+      return data.lineChart;
+    } else if (parametro === 2) {
+      const convertedData = await Object.entries(data.Barchart).map((entry) => ({
+        name: entry[0],
+        data: entry[1],
+      }));
+      return convertedData;
+    } else if (parametro === 3) {
+      return data.circleChart;
+    } else {
+      throw new Error('Parámetro no válido');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
+let lineChart = await fetchData(1);
+let Circle = await fetchData(3);
+let barras = await fetchData(2);
 export const apexConfig = {
   chart: {
     foreColor: '#ccc',
@@ -226,8 +252,9 @@ export const spark4 = {
     }
   }
 }
-
-
+let kWh=[100, 400, 500, 700, 100, 300, 700,200, 800, 600]
+let Gastos=[1, 15, 26, 20, 330, 27,330, 27,330, 27]
+let LABELS=['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV']
 export const optionsLine = {
   chart: {
     height: 328,
@@ -250,25 +277,27 @@ export const optionsLine = {
   },
   // colors: ["#3F51B5", '#2196F3'],
   series: [{
-    name: "Music",
-    data: [1, 15, 26, 20, 33, 27]
+    name: "Gastos",
+    data: lineChart.totalGasto
   },
   {
-    name: "Photos",
-    data: [3, 33, 21, 42, 19, 32]
+    name: "kWh mes",
+    // average
+    data: lineChart.totalKwh
   },
-  {
-    name: "Files",
-    data: [0, 39, 52, 11, 29, 43]
-  }],
+  // {
+  //   name: "Tarifa cobrada",
+  //   data: [0, 39, 52, 11, 29, 43]
+  // }
+],
   title: {
-    text: 'Media',
+    text: 'Por mes',
     align: 'left',
     offsetY: 25,
     offsetX: 20
   },
   subtitle: {
-    text: 'Statistics',
+    text: 'Año 2023',
     offsetY: 55,
     offsetX: 20
   },
@@ -285,7 +314,7 @@ export const optionsLine = {
       bottom: 0
     }
   },
-  labels: ['01/15/2002', '01/16/2002', '01/17/2002', '01/18/2002', '01/19/2002', '01/20/2002'],
+  labels: lineChart.month,
   xaxis: {
     tooltip: {
       enabled: false
@@ -298,12 +327,19 @@ export const optionsLine = {
   }
 }
 
-
+let  porcetaje=[100, 63, 77, 100]
+let devices= ['Foco', 'Clima', 'Refrigerador','Refrigerador']
 export const optionsCircle4 = {
   chart: {
     type: 'radialBar',
     height: 350,
     width: 380,
+  },
+  title: {
+    text: 'Dispositivos con mayor consumo',
+    align: 'left',
+    offsetY: 25,
+    offsetX: 20
   },
   plotOptions: {
     radialBar: {
@@ -326,13 +362,13 @@ export const optionsCircle4 = {
   stroke: {
     lineCap: 'round'
   },
-  series: [71, 63, 77],
-  labels: ['June', 'May', 'April'],
+  series: Circle.percentages,
+  labels: Circle.devices,
   legend: {
     show: true,
     floating: true,
     position: 'right',
-    offsetX: 70,
+    offsetX: -40,
     offsetY: 240
   },
 }
@@ -352,18 +388,9 @@ export const optionsBar = {
       horizontal: false,
     },
   },
-  series: [{
-    name: 'PRODUCT A',
-    data: [14, 25, 21, 17, 12, 13, 11, 19]
-  }, {
-    name: 'PRODUCT B',
-    data: [13, 23, 20, 8, 13, 27, 33, 12]
-  }, {
-    name: 'PRODUCT C',
-    data: [11, 17, 15, 15, 21, 14, 15, 13]
-  }],
+  series: barras ,
   xaxis: {
-    categories: ['2011 Q1', '2011 Q2', '2011 Q3', '2011 Q4', '2012 Q1', '2012 Q2', '2012 Q3', '2012 Q4'],
+    categories: lineChart.month,
   },
   fill: {
     opacity: 1
@@ -373,36 +400,36 @@ export const optionsBar = {
 
 
 
-export const optionsArea = {
-  chart: {
-    height: 380,
-    type: 'area',
-    stacked: false,
-  },
-  stroke: {
-    curve: 'straight'
-  },
-  series: [{
-      name: "Music",
-      data: [11, 15, 26, 20, 33, 27]
-    },
-    {
-      name: "Photos",
-      data: [32, 33, 21, 42, 19, 32]
-    },
-    {
-      name: "Files",
-      data: [20, 39, 52, 11, 29, 43]
-    }
-  ],
-  xaxis: {
-    categories: ['2011 Q1', '2011 Q2', '2011 Q3', '2011 Q4', '2012 Q1', '2012 Q2'],
-  },
-  tooltip: {
-    followCursor: true
-  },
-  fill: {
-    opacity: 1,
-  },
+// export const optionsArea = {
+//   chart: {
+//     height: 380,
+//     type: 'area',
+//     stacked: false,
+//   },
+//   stroke: {
+//     curve: 'straight'
+//   },
+//   series: [{
+//       name: "Music",
+//       data: [11, 15, 26, 20, 33, 27]
+//     },
+//     {
+//       name: "Photos",
+//       data: [32, 33, 21, 42, 19, 32]
+//     },
+//     {
+//       name: "Files",
+//       data: [20, 39, 52, 11, 29, 43]
+//     }
+//   ],
+//   xaxis: {
+//     categories: ['2011 Q1', '2011 Q2', '2011 Q3', '2011 Q4', '2012 Q1', '2012 Q2'],
+//   },
+//   tooltip: {
+//     followCursor: true
+//   },
+//   fill: {
+//     opacity: 1,
+//   },
 
-}
+// }
