@@ -1,22 +1,55 @@
-import { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import ApexCharts from 'react-apexcharts';
 import DevicesContext from '../../contexts/DevicesContext';
 
-function Chartmini(id) {
-    const { Devices, setDevices } = useContext(DevicesContext);  
+function Chartmini(id, check, Name) {
+    const { Devices, setDevices } = useContext(DevicesContext);
+  const [chartData, setChartData] = useState({
+    categories: ['5 Segundos', '10 Segundos', '15 Segundos', '20 Segundos', '25 Segundos', '30 Segundos'],
+    data: [100, 80, 90, 80, 80, 100]
+  });
 
-    useEffect(() => {
-        if (document.getElementById("area-chart") && typeof ApexCharts !== 'undefined') {
-            const chart = new ApexCharts(document.getElementById("area-chart"), options);
-            chart.render();
+  useEffect(() => {
+    let intervalId;
+
+    if (check) {
+      // Iniciar un intervalo que se ejecutará cada 5 segundos
+      intervalId = setInterval(() => {
+        // Obtener la última categoría y agregar una nueva categoría en intervalos de 5 segundos
+         let lastCategoryNumber = parseInt(chartData.categories[chartData.categories.length - 1], 10);
+        if (isNaN(lastCategoryNumber)) {
+            // Si la última categoría no tiene el formato esperado, inicializarla en 5
+            lastCategoryNumber = 5;
         }
 
-      // console.log("🚀 ~ file: Chartmini.jsx:14 ~ useEffect ~ id:", id)
+        // Calcular la nueva categoría y asegurarse de que tenga el formato correcto
+        const newCategoryNumber = lastCategoryNumber + 5;
+        const newCategory = `${newCategoryNumber} Segundos`;
 
-  }, []);
+        // Generar un valor aleatorio entre 50 y 100 para la eficiencia eléctrica
+        const randomValue = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
+
+        // Agregar un nuevo elemento al array `data`
+        chartData.data.push(randomValue);
+
+        // Actualizar el estado del gráfico con los nuevos datos y categorías
+        setChartData({
+          categories: [...chartData.categories, newCategory],
+          data: chartData.data
+        });
+      }, 5000); // 5000 milisegundos = 5 segundos
+    }
+
+    // Limpiar el intervalo cuando el componente se desmonta o cuando `check` cambia a `false`
+    return () => {
+      if (intervalId && check) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [check]);
     let options = {
         chart: {
-            type: "area",
+            type: "line",
             fontFamily: "Inter, sans-serif",
             dropShadow: {
                 enabled: false,
@@ -25,7 +58,7 @@ function Chartmini(id) {
                 show: false,
             },
             title: 'Device Usage',
-            subtitle: 'February 2023',
+            subtitle: 'Hoy',
             animations: {
                 enabled: true,
                 easing: '',
@@ -41,8 +74,8 @@ function Chartmini(id) {
         },
         series: [
             {
-                name: "Device main foco",
-                data: [5, 5, 5, 6, 8, 9],
+                name: Name,
+                data: chartData.data,
                 fill: {
                     type: 'gradient',
                     gradient: {
@@ -57,10 +90,10 @@ function Chartmini(id) {
             }
         ],
         stroke: {
-            curve: 'smooth'
+            curve: 'straight'
         },
         xaxis: {
-            categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
+            categories: chartData.categories,
             labels: {
                 show: false,
             },
@@ -78,9 +111,6 @@ function Chartmini(id) {
             show: true
         }
     };
-  
-
-
 
     return (
         <>

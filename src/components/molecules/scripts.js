@@ -69,7 +69,7 @@ export const spark1 = {
     }
   },
   series: [{
-    data: [25, 66, 41, 59, 25, 44, 12, 36, 9, 21]
+    data: [0.700, 0.735, 0.770, 0.805, 0.840, 0.875, 0.910, 0.945]
   }],
   stroke: {
     curve: 'smooth'
@@ -117,7 +117,7 @@ export const spark2 = {
     }
   },
   series: [{
-    data: [12, 14, 2, 47, 32, 44, 14, 55, 41, 69]
+    data: lineChart.totalKwh
   }],
   stroke: {
     curve: 'smooth'
@@ -165,7 +165,7 @@ export const spark3 = {
     }
   },
   series: [{
-    data: [47, 45, 74, 32, 56, 31, 44, 33, 45, 19]
+    data: lineChart.totalGasto
   }],
   stroke: {
     curve: 'smooth'
@@ -218,7 +218,7 @@ export const spark4 = {
     }
   },
   series: [{
-    data: [15, 75, 47, 65, 14, 32, 19, 54, 44, 61]
+    data: lineChart.totalTime
   }],
   stroke: {
     curve: 'smooth'

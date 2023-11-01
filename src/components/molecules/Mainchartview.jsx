@@ -58,7 +58,7 @@ function Mainchartview() {
 
             <div className="main">
              <Cardinfo/>
-              <div className="row mt-4">
+              <div className="contenCharts">
                 <div className="col-md-5">
                   <div className="box shadow mt-4">
                     <div id="radialBarBottom"></div>
@@ -71,17 +71,13 @@ function Mainchartview() {
                 </div>
               </div>
 
-              <div className="row mt-4">
-                <div className="col-md-5">
+              <div className=" mt-4">
+                <div className="col-md-6">
                   <div className="box shadow mt-4">
                     <div id="barchart"></div>
                   </div>
                 </div>
-                {/* <div className="col-md-7">
-                  <div className="box shadow mt-4">
-                    <div id="areachart"></div>
-                  </div>
-                </div> */}
+                
               </div>
             </div>
 

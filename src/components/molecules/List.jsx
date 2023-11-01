@@ -32,7 +32,7 @@ function List({ params }) {
             {id === 1 ? (
               <Focochart />
             ) : (
-              <Chartmini key={id} id={id} />
+              <Chartmini key={id} id={id} check={status == 1 ? true : false} Name={name} />
             )}
             {/* Fin de la condición */}
           </div>

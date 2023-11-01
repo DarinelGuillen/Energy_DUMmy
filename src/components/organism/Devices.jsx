@@ -9,20 +9,20 @@ function Devices() {
   const { Devices, setDevices } = useContext(DevicesContext);  
 
   useEffect(() => {
-    // fetch(`http://localhost:3000/device/${2}`, {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("🚀 ~ file: Devices.jsx:20 ~ .then ~ data.data:", JSON.stringify(data.data))
-    //     setDevices(data.data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error fetching data:", error);
-    //   });
+    fetch(`http://localhost:3000/device/${2}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("🚀 ~ file: Devices.jsx:20 ~ .then ~ data.data:", JSON.stringify(data.data))
+        setDevices(data.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   }, [User, setDevices]);  
 
   return (
