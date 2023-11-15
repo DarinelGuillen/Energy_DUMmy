@@ -6,6 +6,7 @@ import "../../assets/styles/List.css";
 
 function List({ params }) {
   const { id, name, description, status } = params;
+  // console.log("🚀 ~ file: List.jsx:9 ~ List ~ status:", status)
 
 
   return (
@@ -30,9 +31,15 @@ function List({ params }) {
           <div className="flex h-auto overflow-hidden w-2/5">
             {/* Condición */}
             {id === 1 ? (
-              <Focochart />
+              <Focochart
+              key={id} 
+              />
             ) : (
-              <Chartmini key={id} id={id} check={status == 1 ? true : false} Name={name} />
+              <Chartmini 
+              key={id} 
+              id={id}
+              onOff={status == 1 ? true : false}
+              Name={name} />
             )}
             {/* Fin de la condición */}
           </div>

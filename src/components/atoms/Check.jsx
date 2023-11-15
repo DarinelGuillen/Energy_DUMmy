@@ -6,10 +6,7 @@ function Check({ check, id, name }) {
     const { Devices, setDevices } = useContext(DevicesContext);
 
     const HandlerInput = (check, id, name, e) => {
-        // // console.log("🚀 ~ file: Check.jsx:20 ~ .then ~ data.device[0]:", JSON.stringify())
-
         e.preventDefault();
-        // // // console.log( "🚀 ~ file: Check.jsx:16 ~ HandlerInpu ~ check:", check, " id : ", id, " name : ", name);
         fetch(`http://localhost:3000/device/status/${id}`, {
             method: "PUT",
             headers: {
@@ -18,8 +15,6 @@ function Check({ check, id, name }) {
         })
             .then((response) => response.json())
             .then((data) => {
-                // // console.log("🚀 ~ file: Devices.jsx:20 ~ .then ~ data.data:", JSON.stringify(data.device[0]));
-
                 // Encuentra el dispositivo correspondiente en el contexto DevicesContext
                 const updatedDevices = Devices.map((device) => {
                     if (device.id === data.device[0].id) {
@@ -49,8 +44,6 @@ function Check({ check, id, name }) {
         }
     };
     useEffect(() => {
-
-        // console.log("🚀 ~ file: Check.jsx:45 ~ useEffect ~ Devices:", Devices[0])
     }, [Devices]);  
 
     return (

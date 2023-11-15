@@ -2,17 +2,17 @@ import React, { useEffect, useContext, useState } from 'react';
 import ApexCharts from 'react-apexcharts';
 import DevicesContext from '../../contexts/DevicesContext';
 
-function Chartmini(id, check, Name) {
+function Chartmini(id, onOff, Name) {
     const { Devices, setDevices } = useContext(DevicesContext);
-  const [chartData, setChartData] = useState({
-    categories: ['5 Segundos', '10 Segundos', '15 Segundos', '20 Segundos', '25 Segundos', '30 Segundos'],
-    data: [100, 80, 90, 80, 80, 100]
-  });
-
-  useEffect(() => {
-    let intervalId;
-
-    if (check) {
+    const [chartData, setChartData] = useState({
+        categories: ['5 Segundos', '10 Segundos', '15 Segundos', '20 Segundos', '25 Segundos', '30 Segundos'],
+        data: [100, 80, 90, 80, 80, 100]
+    });
+    
+    useEffect(() => {
+        let intervalId;
+        
+    if (onOff) {
       // Iniciar un intervalo que se ejecutará cada 5 segundos
       intervalId = setInterval(() => {
         // Obtener la última categoría y agregar una nueva categoría en intervalos de 5 segundos
@@ -40,13 +40,13 @@ function Chartmini(id, check, Name) {
       }, 5000); // 5000 milisegundos = 5 segundos
     }
 
-    // Limpiar el intervalo cuando el componente se desmonta o cuando `check` cambia a `false`
+    // Limpiar el intervalo cuando el componente se desmonta o cuando `onOff` cambia a `false`
     return () => {
-      if (intervalId && check) {
+      if (intervalId && onOff) {
         clearInterval(intervalId);
       }
     };
-  }, [check]);
+  }, [onOff]);
     let options = {
         chart: {
             type: "line",

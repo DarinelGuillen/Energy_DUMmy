@@ -1,48 +1,112 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import DevicesContext from '../../contexts/DevicesContext';
 import ApexCharts from 'react-apexcharts';
 
 function Focochart() {
-    const id=1
     const { Devices, setDevices } = useContext(DevicesContext);  
-
+    const [dataC, setDataC] = useState([]);
+  const [label, setLabel] = useState([]);
   useEffect(() => {
     // !start chart
-    // if (document.getElementById("area-chart") && typeof ApexCharts !== 'undefined') {
-    //     const chart = new ApexCharts(document.getElementById("area-chart"), options);
-    //     chart.render();
-    // }
+      if (document.getElementById("area-chart") && typeof ApexCharts !== 'undefined') {
+          const chart = new ApexCharts(document.getElementById("area-chart"), options);
+          chart.render();
+      }
     // !end chart
-        // if (Array.isArray(Devices) && Devices[0].status === 1) {
-        //     // const index = Devices.findIndex(device => device.id === 1);
-        //     const interval = setInterval(() => {
-        //         if (Array.isArray(Devices) && Devices[0].status === 1) {
-        //             const index = Devices.findIndex(device => device.id === id);
-        //             if (index !== -1) {
-        //                 console.log(`Index del dispositivo con ID ${id}: ${index}`);
-        //                 console.log("🚀 ~ file: Chartmini.jsx:19 ~ useEffect ~ Devices:", JSON.stringify(Devices[index]));
-        //             }
-        //         } else {
-        //             console.log("🚀 ~ file: Chartmini.jsx:83 ~ useEffect ~ Devices[0].status:", Devices[0].status);
-        //         }
-        //     }, 10000); // 40000 milisegundos = 40 segundos
+      const interval = setInterval(() => {
+          fetch(`http://localhost:3000/register/chartfoco`)
+              .then((response) => response.json())
+              .then((data) => {
+                  console.log("🚀 ~ file: Focochart.jsx:33 ~ .then ~ data:", data.data.Tiempo)
+                  setDataC(data.data.eficiencia)
+                  setLabel(data.data.Tiempo)
+              })
+              .catch((error) => {
+                  console.error("Error fetching data:", error);
+              });
+      }, 20000); // 40000 milisegundos = 40 segundos
 
-        //     // Limpia el intervalo cuando el componente se desmonta para evitar fugas de memoria
-        //     return () => clearInterval(interval);
-        //     // if (index !== -1) {
-        //     //     console.log(`Index del dispositivo con ID ${id}: ${index}`);
-        //     //     console.log("🚀 ~ file: Chartmini.jsx:19 ~ useEffect ~ Devices:",JSON.stringify( Devices[index]))
-        //     // }
-        // } else {
-        //     console.log("🚀 ~ file: Chartmini.jsx:83 ~ useEffect ~ Devices[0].status:", Devices[0].status)
-        // }
+      return () => clearInterval(interval);
+
     }, [Devices])
     
-    return ( 
+    
+    let options = {
+        chart: {
+            type: "line",
+            fontFamily: "Inter, sans-serif",
+            dropShadow: {
+                enabled: false,
+            },
+            toolbar: {
+                show: false,
+            },
+            title: 'Device Usage',
+            subtitle: 'Hoy',
+            animations: {
+                enabled: true,
+                easing: '',
+                duration: 1000
+            }
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        grid: {
+            show: false,
+            strokeDashArray: 0,
+        },
+        series: [
+            {
+                name: "Name",
+                data: dataC,
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        colors: ['#00FFFF', '#0000FF']
+                    }
+                },
+                stroke: '#000000',
+                markers: {
+                    size: 5,
+                    color: '#000000'
+                }
+            }
+        ],
+        stroke: {
+            curve: 'straight'
+        },
+        xaxis: {
+            categories:label,
+            labels: {
+                show: false,
+            },
+            axisBorder: {
+                show: false,
+            },
+            axisTicks: {
+                show: false,
+            },
+        },
+        yaxis: {
+            show: false,
+        },
+        legend: {
+            show: true
+        }
+    };
+
+    
+    return (
         <>
-            {/* <ApexCharts options={options} series={options.series} type="area" /> */}
+            {/* {Array.isArray(Devices) && Devices[0].status === 1 && ( */}
+                <>
+                    <ApexCharts options={options} series={options.series} type="area" />
+                </>
+            {/* )} */}
         </>
-     );
+    );
+
 }
 
 export default Focochart;
