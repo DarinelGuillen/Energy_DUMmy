@@ -1,3 +1,4 @@
+// C:\Users\darin\Documents\DUMmy\Energy_DUMmy\vite.config.js.timestamp-1695678829977-33683372495ce.mjs
 // vite.config.js
 import { defineConfig } from "file:///C:/Users/darin/Documents/DUMmy/Energy_DUMmy/node_modules/vite/dist/node/index.js";
 import react from "file:///C:/Users/darin/Documents/DUMmy/Energy_DUMmy/node_modules/@vitejs/plugin-react/dist/index.mjs";

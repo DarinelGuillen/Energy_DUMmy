@@ -21,9 +21,13 @@ async function fetchData(parametro) {
     throw error;
   }
 }
-let lineChart = await fetchData(1);
-let Circle = await fetchData(3);
-let barras = await fetchData(2);
+
+(async () => {
+  let lineChart = await fetchData(1);
+  let Circle = await fetchData(3);
+  let barras = await fetchData(2);
+})();
+
 export const apexConfig = {
   chart: {
     foreColor: '#ccc',
