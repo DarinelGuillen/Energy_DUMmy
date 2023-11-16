@@ -14,10 +14,10 @@ function Focochart() {
       }
     // !end chart
       const interval = setInterval(() => {
-          fetch(`http://localhost:3000/register/chartfoco`)
+          fetch(`http://localHost:3000/register/chartfoco`)
               .then((response) => response.json())
               .then((data) => {
-                  console.log("🚀 ~ file: Focochart.jsx:33 ~ .then ~ data:", data.data.Tiempo)
+                  // console.log("🚀 ~ file: Focochart.jsx:33 ~ .then ~ data:", data.data.Tiempo)
                   setDataC(data.data.eficiencia)
                   setLabel(data.data.Tiempo)
               })

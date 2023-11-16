@@ -19,7 +19,7 @@ function Log() {
 
     }
     const handleLogin = () => {
-        const URL = `http://localhost:3000/users/${email}/${password}`;
+        const URL = `http://localHost:3000/users/${email}/${password}`;
 
         fetch(URL)
             .then((response) => {

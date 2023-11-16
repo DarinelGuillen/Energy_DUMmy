@@ -9,7 +9,7 @@ function Devices() {
   const { Devices, setDevices } = useContext(DevicesContext);  
 
   useEffect(() => {
-    fetch(`http://localhost:3000/device/${2}`, {
+    fetch(`http://localHost:3000/device/${2}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -17,7 +17,7 @@ function Devices() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("🚀 ~ file: Devices.jsx:20 ~ .then ~ data.data:", JSON.stringify(data.data))
+        // console.log("🚀 ~ file: Devices.jsx:20 ~ .then ~ data.data:", JSON.stringify(data.data))
         setDevices(data.data);
       })
       .catch((error) => {
