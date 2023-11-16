@@ -7,7 +7,7 @@ function Check({ check, id, name }) {
 
     const HandlerInput = (check, id, name, e) => {
         e.preventDefault();
-        fetch(`http://localHost:3000/device/status/${id}`, {
+        fetch(`http://44.218.00.5:3000/device/status/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

@@ -15,7 +15,7 @@ function Regist() {
 
     }
     const handleRegister = () => {
-        // const URL = `http://localHost:3000/users/${email}/${password}`;
+        // const URL = `http://44.218.00.5:3000/users/${email}/${password}`;
 
         // fetch(URL)
         //     .then((response) => {

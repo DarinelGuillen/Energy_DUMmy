@@ -1,7 +1,8 @@
+// C:\Users\darin\Documents\DUMmy\Energy_DUMmy\src\components\molecules\scripts.js
 async function fetchData(parametro) {
   console.log("🚀 ~ file: scripts.js:2 ~ fetchData ~ parametro:", parametro);
   try {
-    const response = await fetch('http://localhost:3000/register/chart');
+    const response = await fetch('http://44.218.00.5:3000/register/chart');
     const data = await response.json();
     if (parametro === 1) {
       return data.lineChart;

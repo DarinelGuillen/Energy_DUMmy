@@ -24,7 +24,7 @@ let kWh=[
 
   async function fetchData() {
   try {
-    const response = await fetch('http://localHost:3000/register/chart');
+    const response = await fetch('http://44.218.00.5:3000/register/chart');
     const data = await response.json();
     setApexConfig({
         chart: {
