@@ -54,32 +54,32 @@ function Mainchartview() {
     <>
       {chartData && (
     // Render your charts using the `chartData` state variable
-      <div id="wrapper">
+        <div id="wrapper ">
 
             <div className="main">
              <Cardinfo/>
-              <div className="contenCharts">
-                <div className="col-md-5">
-                  <div className="box shadow mt-4">
-                    <div id="radialBarBottom"></div>
-                  </div>
-                </div>
-                <div className="col-md-7">
-                  <div className="box shadow mt-4">
-                    <div id="line-adwords" className=""></div>
-                  </div>
-                </div>
-              </div>
+             <div className="contenCharts flex flex-wrap gap-3 mt-5"> {/* Utilizo la clase gap-4 para agregar espacio entre los elementos */}
+  <div className="w-full lg:w-[48%] colorNotBlack ">
+    <div className="bg-red-900 box shadow">
+      <div id="radialBarBottom"></div>
+    </div>
+  </div>
+  <div className="w-full lg:w-1/2 colorNotBlack">
+    <div className="box shadow">
+      <div id="line-adwords" className=""></div>
+    </div>
+  </div>
+</div>
 
-              <div className=" mt-4">
-                <div className="col-md-6">
-                  <div className="box shadow mt-4">
-                    <div id="barchart"></div>
-                  </div>
-                </div>
-                
-              </div>
-            </div>
+<div className="colorNotBlack my-4">
+  <div className="col-md-6">
+    <div className="box shadow">
+      <div id="barchart"></div>
+    </div>
+  </div>
+</div>
+</div>
+
 
       </div>
       )}

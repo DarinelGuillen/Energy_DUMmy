@@ -9,7 +9,7 @@ function Main() {
   const { User,setUser  } = useContext(UserContext);
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen h-screen flex-grow-1">
+    <div className="flex flex-col md:flex-row min-h-screen h-screen w-full flex-grow-1">
       {User.leftColumn == false && User.rightColumn == false && (
         <>
         <Holy/>

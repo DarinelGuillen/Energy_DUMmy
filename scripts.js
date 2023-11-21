@@ -1,30 +1,47 @@
-// C:\Users\darin\Documents\DUMmy\Energy_DUMmy\src\components\molecules\scripts.js
-async function fetchData(parametro) {
-  console.log("🚀 ~ file: scripts.js:2 ~ fetchData ~ parametro:", parametro);
+let lineChart, Circle, barras;
+
+async function fetchData() {
   try {
     const response = await fetch('https://apiwenergy.parachico.dev:3000/register/chart');
     const data = await response.json();
-    if (parametro === 1) {
-      return data.lineChart;
-    } else if (parametro === 2) {
-      const convertedData = await Object.entries(data.Barchart).map((entry) => ({
-        name: entry[0],
-        data: entry[1],
-      }));
-      return convertedData;
-    } else if (parametro === 3) {
-      return data.circleChart;
-    } else {
-      throw new Error('Parámetro no válido');
-    }
+    
+    lineChart = data.lineChart;
+    
+    const convertedData = Object.entries(data.Barchart).map((entry) => ({
+      name: entry[0],
+      data: entry[1],
+    }));
+    Circle = data.circleChart;
+    barras = convertedData;
+
+    console.log("Data fetched successfully:", lineChart, Circle, barras);
   } catch (error) {
     console.error('Error:', error);
     throw error;
   }
 }
-let lineChart = await fetchData(1);
-let Circle = await fetchData(3);
-let barras = await fetchData(2);
+
+(async () => {
+  await fetchData();
+})();
+
+
+let kWh=[
+  154.5,
+  168.3,
+  195.9,
+  140.7,
+  168.3,
+  223.5,
+  159.1,
+  140.7,
+  131.5,
+  126.9,
+  122.3
+]
+let Gastos=[1, 15, 26, 20, 330, 27,330, 27,330, 27]
+let LABELS=['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV']
+
 export const apexConfig = {
   chart: {
     foreColor: '#ccc',
@@ -51,6 +68,53 @@ export const apexConfig = {
     }
   }
 };
+export const spark2 = {
+  chart: {
+    id: 'spark2',
+    group: 'sparks',
+    type: 'line',
+    height: 80,
+    sparkline: {
+      enabled: true
+    },
+    dropShadow: {
+      enabled: true,
+      top: 1,
+      left: 1,
+      blur: 2,
+      opacity: 0.2,
+    }
+  },
+  series: [{
+    data: lineChart.totalKwh|| kWh
+  }],
+  stroke: {
+    curve: 'smooth'
+  },
+  grid: {
+    padding: {
+      top: 20,
+      bottom: 10,
+      left: 110
+    }
+  },
+  markers: {
+    size: 0
+  },
+  colors: ['#fff'],
+  tooltip: {
+    x: {
+      show: false
+    },
+    y: {
+      title: {
+        formatter: function formatter(val) {
+          return '';
+        }
+      }
+    }
+  }
+}
 
 export const spark1 = {
   chart: {
@@ -100,53 +164,7 @@ export const spark1 = {
   }
 }
 
-export const spark2 = {
-  chart: {
-    id: 'spark2',
-    group: 'sparks',
-    type: 'line',
-    height: 80,
-    sparkline: {
-      enabled: true
-    },
-    dropShadow: {
-      enabled: true,
-      top: 1,
-      left: 1,
-      blur: 2,
-      opacity: 0.2,
-    }
-  },
-  series: [{
-    data: lineChart.totalKwh
-  }],
-  stroke: {
-    curve: 'smooth'
-  },
-  grid: {
-    padding: {
-      top: 20,
-      bottom: 10,
-      left: 110
-    }
-  },
-  markers: {
-    size: 0
-  },
-  colors: ['#fff'],
-  tooltip: {
-    x: {
-      show: false
-    },
-    y: {
-      title: {
-        formatter: function formatter(val) {
-          return '';
-        }
-      }
-    }
-  }
-}
+
 
 export const spark3 = {
   chart: {
@@ -253,17 +271,11 @@ export const spark4 = {
     }
   }
 }
-let kWh=[100, 400, 500, 700, 100, 300, 700,200, 800, 600]
-let Gastos=[1, 15, 26, 20, 330, 27,330, 27,330, 27]
-let LABELS=['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV']
 export const optionsLine = {
   chart: {
     height: 328,
     type: 'line',
-    
     background: 'tranparent',
-    "foreColor": "#FFFFFF",
-    
     zoom: {
       enabled: false
     },
@@ -287,7 +299,7 @@ export const optionsLine = {
   {
     name: "kWh mes",
     // average
-    data: lineChart.totalKwh
+    data: lineChart.totalKwh || kWh
   },
   // {
   //   name: "Tarifa cobrada",
@@ -338,8 +350,6 @@ export const optionsCircle4 = {
     type: 'radialBar',
     height: 350,
     width: 380,
-    "foreColor": "#FFFFFF",
-
   },
   title: {
     text: 'Dispositivos con mayor consumo',
@@ -387,8 +397,6 @@ export const optionsBar = {
     height: 380,
     type: 'bar',
     stacked: true,
-    "foreColor": "#FFFFFF",
-
   },
   plotOptions: {
     bar: {
