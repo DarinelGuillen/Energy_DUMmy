@@ -24,7 +24,7 @@ function Mainchartview() {
     console.log("🚀 ~ file: Mainchartview.jsx:13 ~ useEffect ~ useEffect:");
     const fetchDataAndRenderCharts = async () => {
       try {
-        const response = await fetch('http://44.218.00.5:3000/register/chart');
+        const response = await fetch('https://apiwenergy.parachico.dev:3000/register/chart');
         const data = await response.json();
         console.log("🚀 ~ file: Mainchartview.jsx:19 ~ fetchDataAndRenderCharts ~ data:", data);
         setChartData(data);

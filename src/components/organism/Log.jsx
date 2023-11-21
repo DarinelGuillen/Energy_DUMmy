@@ -19,7 +19,7 @@ function Log() {
 
     }
     const handleLogin = () => {
-        const URL = `http://44.218.00.5:3000/users/${email}/${password}`;
+        const URL = `https://apiwenergy.parachico.dev:3000/users/${email}/${password}`;
 
         fetch(URL)
             .then((response) => {

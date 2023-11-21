@@ -2,7 +2,7 @@
 async function fetchData(parametro) {
   console.log("🚀 ~ file: scripts.js:2 ~ fetchData ~ parametro:", parametro);
   try {
-    const response = await fetch('http://44.218.00.5:3000/register/chart');
+    const response = await fetch('https://apiwenergy.parachico.dev:3000/register/chart');
     const data = await response.json();
     if (parametro === 1) {
       return data.lineChart;
@@ -261,6 +261,7 @@ export const optionsLine = {
     height: 328,
     type: 'line',
     background: 'tranparent',
+    "foreColor": "#FFFFFF",
     zoom: {
       enabled: false
     },
@@ -335,6 +336,8 @@ export const optionsCircle4 = {
     type: 'radialBar',
     height: 350,
     width: 380,
+    "foreColor": "#FFFFFF",
+
   },
   title: {
     text: 'Dispositivos con mayor consumo',
@@ -382,6 +385,8 @@ export const optionsBar = {
     height: 380,
     type: 'bar',
     stacked: true,
+    "foreColor": "#FFFFFF",
+
   },
   plotOptions: {
     bar: {

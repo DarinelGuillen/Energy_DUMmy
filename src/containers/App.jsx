@@ -18,12 +18,6 @@ function App() {
       },
 
     });
-
-  useEffect(() => {
-    // console.log("🚀 ~ file: App.jsx:18 ~ useEffect ~ User:", JSON.stringify(User))
-    // console.log("🚀 ~ file: App.jsx:18 ~ useEffect ~ Devices:", JSON.stringify(Devices))
-  }, [User]);
-
   return (
     <UserContext.Provider value={{ User, setUser }}>
       <DevicesContext.Provider value={{ Devices, setDevices }}>

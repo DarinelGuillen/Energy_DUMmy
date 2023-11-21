@@ -9,7 +9,7 @@ function Devices() {
   const { Devices, setDevices } = useContext(DevicesContext);  
 
   useEffect(() => {
-    fetch(`http://44.218.00.5:3000/device/${2}`, {
+    fetch(`https://apiwenergy.parachico.dev:3000/device/${2}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
